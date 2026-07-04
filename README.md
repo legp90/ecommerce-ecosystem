@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+# 🛒 E-Commerce Ecosystem & Checkout
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-grade, end-to-end e-commerce storefront showcasing advanced client-side architecture. This platform handles complex frontend business logic, including scalable global state management for real-time shopping cart synchronization, dynamic product catalog filtering, and an optimized checkout workflow with strict validation schemas.
 
-Currently, two official plugins are available:
+🌐 **Live Demo:** [View Live Instance] https://ecommerce-ecosystem.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Scalable Global State Management:** Leverages React Context API to handle seamless, atomic updates across the shopping cart, dynamically calculating item quantities, prices, taxes, and shipping constraints on the fly.
+* **Dynamic Multi-Parametric Filtering:** A highly optimized product catalog engine allowing users to filter and sort items instantly by categories, price ranges, and search terms with immediate UI response.
+* **Optimized Checkout Pipeline:** A simulated multi-step checkout workflow featuring robust form validations, secure mocked payment gateway feedback, and graceful handling of success/failure order states.
+* **High-Conversion UI/UX:** Clean, modern layout engineered with utility-first Tailwind CSS classes, emphasizing accessibility, strict input feedback, and fluid transitions to minimize cart abandonment.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **Core Framework:** React (Functional Design, Optimized Hooks, Context API)
+* **Static Typing:** TypeScript (Strict interfaces for Products, CartItems, and Checkout schemas)
+* **Styling & Asset System:** Tailwind CSS & Lucide React
+* **Build Tooling:** Vite
+* **Hosting & Deployment:** Vercel
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 Technical Highlight: Predictable State Transitions
 
+The core of the e-commerce ecosystem relies on type-safe, immutable mutations to the global state, ensuring that cart synchronization is deterministic and safe across asynchronous user interactions:
+
+```typescript
+export interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
+// Prevents state corruption by enforcing strict boundary validations
+const updateCartQuantity = (productId: string, targetAmount: number) => {
+  setCart((currentCart) =>
+    currentCart.map((item) =>
+      item.id === productId
+        ? { ...item, quantity: Math.max(1, targetAmount) }
+        : item
+    )
+  );
+};
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔧 Installation and Local Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Follow these steps to run the e-commerce application locally:
 
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/legp90/ecommerce-checkout.git
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
