@@ -2,7 +2,7 @@
 
 A production-grade, end-to-end e-commerce storefront showcasing advanced client-side architecture. This platform handles complex frontend business logic, including scalable global state management for real-time shopping cart synchronization, dynamic product catalog filtering, and an optimized checkout workflow with strict validation schemas.
 
-🌐 **Live Demo:** [View Live Instance]https://ecommerce-ecosystem.vercel.app/
+🌐 **Live Demo:** [View Live Instance](https://ecommerce-ecosystem.vercel.app/)
 
 ---
 
